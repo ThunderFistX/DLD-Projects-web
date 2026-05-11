@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DLD Projects - Order Form</title>
+  <link rel="stylesheet" href="./1.css">
+</head>
+
+<body data-page="order">
+  <main>
+    <div class="form-wrapper">
+      <div class="form-header">
+        <h1>Project Order Form</h1>
+        <p>Complete the form below to place your custom DLD project order</p>
+      </div>
+
+      <div class="alert" id="form-alert"></div>
+
+      <form id="project-order-form" novalidate>
+        <input type="hidden" id="order-id" value="">
+
+        <!-- SECTION: Personal Info -->
+        <fieldset>
+          <legend>Personal Information</legend>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="full-name">Full Name <span class="required">*</span></label>
+              <input type="text" id="full-name" name="fullName" placeholder="e.g. John Doe" required>
+              <span class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address <span class="required">*</span></label>
+              <input type="email" id="email" name="email" placeholder="john@example.com" required>
+              <span class="error-message"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="password">Account Password <span class="required">*</span></label>
+              <input type="password" id="password" name="password" placeholder="Min 8 characters" required>
+              <span class="toggle-password" onclick="togglePassword()">👁</span>
+              <span class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number <span class="required">*</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567" required>
+              <span class="error-message"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="student-id">Student ID</label>
+              <input type="search" id="student-id" name="studentId" placeholder="Search or enter your ID...">
+              <span class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="portfolio">Portfolio URL</label>
+              <input type="url" id="portfolio" name="portfolio" placeholder="https://yourportfolio.com">
+              <span class="error-message"></span>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- SECTION: Project Details -->
+        <fieldset>
+          <legend>Project Details</legend>
+
+          <div class="form-group">
+            <label for="project-title">Project Title <span class="required">*</span></label>
+            <input type="text" id="project-title" name="projectTitle" placeholder="e.g. 16-Bit RISC Processor" required>
+            <span class="error-message"></span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="project-category">Project Category <span class="required">*</span></label>
+              <select id="project-category" name="projectCategory" required>
+                <option value="">-- Select Category --</option>
+                <option value="combinational">Combinational Circuits</option>
+                <option value="sequential">Sequential Circuits</option>
+                <option value="fsm">Finite State Machines</option>
+                <option value="processor">Microprocessor Design</option>
+                <option value="memory">Memory Systems</option>
+                <option value="interface">Interface Protocols</option>
+              </select>
+              <span class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="sub-category">Sub-Categories (Hold Ctrl/Cmd to select multiple)</label>
+              <select id="sub-category" name="subCategory" multiple size="4">
+                <option value="verilog">Verilog</option>
+                <option value="vhdl">VHDL</option>
+                <option value="systemverilog">SystemVerilog</option>
+                <option value="fpga">FPGA Implementation</option>
+                <option value="asic">ASIC Design</option>
+                <option value="simulation">Simulation Only</option>
+              </select>
+              <span class="error-message"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="complexity">Complexity Level (1-10)</label>
+              <div class="range-wrap">
+                <input type="range" id="complexity" name="complexity" min="1" max="10" value="5"
+                  oninput="document.getElementById('complexity-val').textContent = this.value">
+                <span class="range-value" id="complexity-val">5</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="team-size">Team Size <span class="required">*</span></label>
+              <input type="number" id="team-size" name="teamSize" min="1" max="10" value="1" required>
+              <span class="error-message"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="project-color">Preferred Theme Color for Documentation</label>
+            <div class="color-wrap">
+              <input type="color" id="project-color" name="projectColor" value="#6366f1">
+              <span id="color-hex">#6366f1</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Project Description & Requirements <span class="required">*</span></label>
+            <textarea id="description" name="description" rows="5"
+              placeholder="Describe your project requirements, constraints, target platform, etc..."
+              required></textarea>
+            <span class="char-count"><span id="char-count">0</span> / 500 characters</span>
+            <span class="error-message"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="reference-file">Upload Reference Files (PDF, ZIP, Images)</label>
+            <input type="file" id="reference-file" name="referenceFile" accept=".pdf,.zip,.png,.jpg,.jpeg,.v,.sv,.vhd">
+            <span class="file-name" id="file-name">No file chosen</span>
+            <span class="error-message"></span>
+          </div>
+        </fieldset>
+
+        <!-- SECTION: Timeline -->
+        <fieldset>
+          <legend>Timeline & Delivery</legend>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="start-date">Preferred Start Date <span class="required">*</span></label>
+              <input type="date" id="start-date" name="startDate" required>
+              <span class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="deadline">Deadline Date <span class="required">*</span></label>
+              <input type="date" id="deadline" name="deadline" required>
+              <span class="error-message"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="delivery-time">Preferred Delivery Time</label>
+              <input type="time" id="delivery-time" name="deliveryTime">
+            </div>
+
+            <div class="form-group">
+              <label for="delivery-month">Delivery Month</label>
+              <input type="month" id="delivery-month" name="deliveryMonth">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="delivery-week">Delivery Week</label>
+            <input type="week" id="delivery-week" name="deliveryWeek">
+          </div>
+
+          <div class="form-group">
+            <label for="meeting">Schedule Consultation (Date & Time)</label>
+            <input type="datetime-local" id="meeting" name="meeting">
+          </div>
+        </fieldset>
+
+        <!-- SECTION: Deliverables -->
+        <fieldset>
+          <legend>Required Deliverables</legend>
+
+          <div class="checkbox-group">
+            <label class="check-label">
+              <input type="checkbox" name="deliverables" value="source-code" checked>
+              <span class="check-box"></span>
+              Source Code (Verilog/VHDL)
+            </label>
+
+            <label class="check-label">
+              <input type="checkbox" name="deliverables" value="testbench">
+              <span class="check-box"></span>
+              Testbench & Simulation Files
+            </label>
+
+            <label class="check-label">
+              <input type="checkbox" name="deliverables" value="documentation">
+              <span class="check-box"></span>
+              Technical Documentation
+            </label>
+
+            <label class="check-label">
+              <input type="checkbox" name="deliverables" value="presentation">
+              <span class="check-box"></span>
+              Presentation Slides (PPT)
+            </label>
+
+            <label class="check-label">
+              <input type="checkbox" name="deliverables" value="video-demo">
+              <span class="check-box"></span>
+              Video Demo / Tutorial
+            </label>
+
+            <label class="check-label">
+              <input type="checkbox" name="deliverables" value="fpga-bitstream">
+              <span class="check-box"></span>
+              FPGA Bitstream File
+            </label>
+          </div>
+          <span class="error-message" id="deliverables-error"></span>
+        </fieldset>
+
+        <!-- SECTION: Budget & Payment -->
+        <fieldset>
+          <legend>Budget & Payment Method</legend>
+
+          <div class="form-group">
+            <label>Expected Budget Range <span class="required">*</span></label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="budget" value="under-50" required>
+                <span class="radio-circle"></span>
+                Under $50
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="budget" value="50-100">
+                <span class="radio-circle"></span>
+                $50 - $100
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="budget" value="100-200">
+                <span class="radio-circle"></span>
+                $100 - $200
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="budget" value="200-plus">
+                <span class="radio-circle"></span>
+                $200+
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="budget" value="negotiable">
+                <span class="radio-circle"></span>
+                Negotiable
+              </label>
+            </div>
+            <span class="error-message" id="budget-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label>Payment Method Preference</label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="payment" value="credit-card" checked>
+                <span class="radio-circle"></span>
+                Credit Card
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="payment" value="paypal">
+                <span class="radio-circle"></span>
+                PayPal
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="payment" value="crypto">
+                <span class="radio-circle"></span>
+                Cryptocurrency
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="payment" value="bank-transfer">
+                <span class="radio-circle"></span>
+                Bank Transfer
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="check-label terms-label">
+              <input type="checkbox" id="terms" name="terms" required>
+              <span class="check-box"></span>
+              I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a> <span
+                class="required">*</span>
+            </label>
+            <span class="error-message" id="terms-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label class="check-label">
+              <input type="checkbox" id="newsletter" name="newsletter" checked>
+              <span class="check-box"></span>
+              Subscribe to newsletter for project updates and discounts
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- ACTIONS -->
+        <div class="form-actions">
+          <button type="reset" class="btn btn-secondary">Reset Form</button>
+          <button type="submit" class="btn btn-primary" id="submit-btn">
+            <span class="btn-text">Place Order</span>
+            <span class="btn-loader hidden"></span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script src="./1.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DLD Projects - Contact</title>
+  <link rel="stylesheet" href="./1.css">
+</head>
+
+<body data-page="contact">
+  <main>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Get in Touch</h2>
+        <p style="color: var(--gray); margin-bottom: 2rem;">Have questions about a project or need a custom solution?
+          We're here to help.</p>
+
+        <div class="contact-method">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <strong>Email</strong>
+            <p style="color: var(--gray);">support@dldprojects.com</p>
+          </div>
+        </div>
+
+        <div class="contact-method">
+          <div class="contact-icon">📞</div>
+          <div>
+            <strong>Phone</strong>
+            <p style="color: var(--gray);">+1 (234) 567-890</p>
+          </div>
+        </div>
+
+        <div class="contact-method">
+          <div class="contact-icon">⏰</div>
+          <div>
+            <strong>Hours</strong>
+            <p style="color: var(--gray);">Mon - Fri, 9AM - 6PM EST</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-container" style="margin: 0;">
+        <h2>Send Message</h2>
+        <div class="alert"></div>
+
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="contact-name">Your Name</label>
+            <input type="text" id="contact-name" placeholder="John Doe">
+            <span class="error-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="contact-email">Email Address</label>
+            <input type="email" id="contact-email" placeholder="you@example.com">
+            <span class="error-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" placeholder="How can we help you?"></textarea>
+            <span class="error-message"></span>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send
+            Message</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script src="./1.js"></script>
+</body>
+
+</html>

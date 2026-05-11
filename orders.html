@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DLD Projects - Order</title>
+  <link rel="stylesheet" href="./1.css">
+</head>
+
+<body data-page="order">
+  <main>
+    <div class="form-container" style="max-width: 600px;">
+      <h2>Order a Project</h2>
+      <p class="form-subtitle">Fill in the details and we'll get started</p>
+
+      <div class="alert"></div>
+
+      <form id="order-form">
+        <div class="form-group">
+          <label for="project-select">Select Project</label>
+          <select id="project-select">
+            <option value="">-- Choose a project --</option>
+          </select>
+          <span class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="order-requirements">Specific Requirements</label>
+          <textarea id="order-requirements"
+            placeholder="Describe any specific requirements, constraints, or modifications needed..."></textarea>
+          <span class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="order-deadline">Deadline</label>
+          <input type="date" id="order-deadline">
+          <span class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="order-phone">Contact Phone</label>
+          <input type="tel" id="order-phone" placeholder="+1 (234) 567-890">
+          <span class="error-message"></span>
+        </div>
+
+        <a href="./order-form.html"> <button type="submit" class="btn btn-primary"
+            style="width: 100%; justify-content: center;">Place Order</button></a>
+      </form>
+    </div>
+  </main>
+
+  <script src="./1.js"></script>
+</body>
+
+</html>

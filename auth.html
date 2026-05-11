@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DLD Projects - Login</title>
+  <link rel="stylesheet" href="./1.css">
+</head>
+
+<body data-page="auth">
+  <main>
+    <div class="form-container">
+      <h2>Welcome Back</h2>
+      <p class="form-subtitle">Sign in to your account or create a new one</p>
+
+      <div class="alert"></div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="login-tab">Sign In</button>
+        <button class="auth-tab" id="signup-tab">Sign Up</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="login-form" class="auth-form active">
+        <div class="form-group">
+          <label for="login-email">Email Address</label>
+          <input type="email" id="login-email" placeholder="you@example.com">
+          <span class="error-message"></span>
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" placeholder="••••••••">
+          <span class="error-message"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Sign In</button>
+      </form>
+
+      <!-- Signup Form -->
+      <form id="signup-form" class="auth-form">
+        <div class="form-group">
+          <label for="signup-name">Full Name</label>
+          <input type="text" id="signup-name" placeholder="John Doe">
+          <span class="error-message"></span>
+        </div>
+        <div class="form-group">
+          <label for="signup-email">Email Address</label>
+          <input type="email" id="signup-email" placeholder="you@example.com">
+          <span class="error-message"></span>
+        </div>
+        <div class="form-group">
+          <label for="signup-password">Password</label>
+          <input type="password" id="signup-password" placeholder="Min 6 characters">
+          <span class="error-message"></span>
+        </div>
+        <div class="form-group">
+          <label for="signup-confirm">Confirm Password</label>
+          <input type="password" id="signup-confirm" placeholder="Repeat password">
+          <span class="error-message"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Create
+          Account</button>
+      </form>
+    </div>
+  </main>
+
+  <script src="./1.js"></script>
+</body>
+
+</html>

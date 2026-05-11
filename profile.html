@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DLD Projects - Profile</title>
+  <link rel="stylesheet" href="./1.css">
+</head>
+
+<body data-page="profile">
+  <main>
+    <div class="profile-header">
+      <div class="profile-avatar" id="profile-avatar">U</div>
+      <div class="profile-info">
+        <h2 id="profile-name">User Name</h2>
+        <p id="profile-email">user@example.com</p>
+        <p style="font-size: 0.9rem; color: var(--gray);">Member since <span id="profile-date">-</span></p>
+      </div>
+    </div>
+
+    <div class="profile-section">
+      <h3>My Orders</h3>
+      <div id="orders-list">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <div class="profile-section">
+      <h3>Quick Actions</h3>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="./order-form.html" class="btn btn-primary">Place New Order</a>
+        <a href="detail.html" class="btn btn-secondary" style="color: var(--dark); border-color: var(--gray);">Browse
+          Projects</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="./1.js"></script>
+</body>
+
+</html>
